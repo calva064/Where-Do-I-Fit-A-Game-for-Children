@@ -39,9 +39,8 @@ function preload() {
   myFont = loadFont("HeyTiny.ttf");
 
   // load in sound
-  soundFormats('mp3');
-  song = loadSound("song2.mp3");
-
+  soundFormats('wav');
+  song = loadSound("KleptoLindaMountainA.wav");
 
   //load in images
   for (i=0;i<10;i++){
@@ -50,11 +49,9 @@ function preload() {
 }
 
 function setup() {
+
   createCanvas(windowWidth, windowHeight);
   textAlign(CENTER);
-
-
-
 
   //create the spell particles
   for (let i = 0; i < 50; i++) {
@@ -71,20 +68,20 @@ function setup() {
   );
 
   //create the interactive objects
-  panda = new interactiveObject(imagesArray[6], 80, 550, 100, 100);
-  sock = new interactiveObject(imagesArray[7], 380, 550, 100, 100);
-  book = new interactiveObject(imagesArray[8],680, 550,100, 100);
-  toothbrush = new interactiveObject(imagesArray[9],980, 550, 100, 100);
+  panda = new interactiveObject(imagesArray[6], windowWidth/3.4, windowHeight/1.3, 100, 100);
+  sock = new interactiveObject(imagesArray[7], windowWidth/2.5, windowHeight/1.3, 100, 100);
+  book = new interactiveObject(imagesArray[8],windowWidth/2, windowHeight/1.3,100, 100);
+  toothbrush = new interactiveObject(imagesArray[9],windowWidth/1.6, windowHeight/1.3, 100, 100);
   girlInPhoto = new interactiveObject(imagesArray[0],windowWidth/12, 200, windowWidth/1.4, 700);
 
   //create the static images
-  girl = new staticItem(imagesArray[0],windowWidth/12, 200, windowWidth/1.4, 700);
-  suitcase = new staticItem(imagesArray[1],1000, 400, 300, 300);
-  girl2 = new staticItem(imagesArray[0],windowWidth/1.2, windowHeight/2.75, 1000,600);
+  girl = new staticItem(imagesArray[0],windowWidth/12, windowHeight/4, windowWidth/1.4, 700);
+  suitcase = new staticItem(imagesArray[1],windowWidth/1.4, windowHeight/1.8, 300, 300);
+  girl2 = new staticItem(imagesArray[0],windowWidth/1.24, windowHeight/2.75, 1000,600);
   dad = new staticItem(imagesArray[2], windowWidth/1.5, windowHeight/2.4, 175, 400);
   witch = new staticItem(imagesArray[3], windowWidth/4, windowHeight/2.5, 200, 400);
   family = new staticItem(imagesArray[4], windowWidth/2, windowHeight/2.5, 200, 400);
-  introCloud = new staticItem(imagesArray[5],-windowWidth/15, windowHeight/15, windowWidth, windowWidth/2);
+  introCloud = new staticItem(imagesArray[5],-windowWidth/15, windowHeight/11, windowWidth, windowWidth/2);
   introCloud2 = new staticItem(imagesArray[5],windowWidth/8, windowHeight/1.65, windowWidth/1.5, windowWidth/4);
 
   //Add objects to the interactive object array
@@ -98,7 +95,7 @@ function setup() {
   textTitleScene1 = new textObject(
     "Where Do I Fit?",
     windowWidth / 2,
-    windowHeight / 2,
+    windowHeight / 1.8,
     windowWidth/12,
     0,
     0,
@@ -108,8 +105,8 @@ function setup() {
   );
   textTitleScene2 = new textObject(
     "By Ariel Calver",
-    width / 2,
-    height / 1.2,
+    windowWidth  / 2,
+    windowHeight / 1.18,
     windowWidth/20,
     0,
     0,
@@ -132,8 +129,8 @@ function setup() {
   //create text for suitcase scene
   textSuitcaseScene1 = new textObject(
     "Pack your bag to head",
-    width / 2,
-    height / 12 +50,
+    windowWidth / 2,
+    windowHeight / 10,
     70,
     0,
     0,
@@ -142,8 +139,8 @@ function setup() {
   );
   textSuitcaseScene2 = new textObject(
     "to daddy's house this weekend",
-    width / 2,
-    height / 12 + 120,
+    windowWidth / 2,
+    windowHeight / 5,
     70,
     0,
     0,
@@ -152,8 +149,8 @@ function setup() {
   );
   textSuitcaseScene3 = new textObject(
     '"I hope I did not forget anything!"',
-    width / 2,
-    height / 12 + 350,
+    windowWidth / 2,
+    windowHeight / 1.8,
     70,
     0,
     0,
@@ -163,7 +160,7 @@ function setup() {
   textSuitcaseScene4 = new textObject(
     "Make sure to put every item",
     width / 2,
-    height / 12 + 200,
+    height / 3,
     70,
     0,
     0,
@@ -173,7 +170,7 @@ function setup() {
   textSuitcaseScene5 = new textObject(
     "item into your suitcase",
     width / 2,
-    height / 12 + 270,
+    height / 2.3,
     70,
     0,
     0,
@@ -185,8 +182,8 @@ function setup() {
   //create text for witch scene
   textWitchScene1 = new textObject(
     "Click to stop the Wicked Witch of the West",
-    width / 2,
-    height / 12 + 30,
+    windowWidth / 2,
+    windowHeight / 9,
     75,
     0,
     0,
@@ -197,8 +194,8 @@ function setup() {
 
   textWitchScene2 = new textObject(
     "from casting a spell on daddy",
-    width / 2,
-    height / 12 + 100,
+    windowWidth / 2,
+    windowHeight /5,
     75,
     0,
     0,
@@ -209,7 +206,7 @@ function setup() {
 
   //create text for family scene
   textFamilyScene1 = new textObject(
-    "Might as well give up",
+    '"Might as well give up"',
     width / 2,
     height /3,
     80,
@@ -220,8 +217,6 @@ function setup() {
     myFont
   );
 }
-
-
 
 function mousePressed() {
   for (let i = 0; i < spells.length; i++) {
@@ -254,7 +249,6 @@ function draw() {
   cursor(ARROW);
   switch (mode) {
     case 0:
-      
       titleScene();
       break;
 
@@ -289,7 +283,9 @@ function draw() {
 }
 
 function titleScene() {
-
+  if (!song.isPlaying()){
+    song.play();
+  }
 
   background(255, 16, 240);
   introCloud.display();
@@ -297,6 +293,7 @@ function titleScene() {
   buttonContinue.display();
   textTitleScene1.display();
   textTitleScene2.display();
+
 }
 
 function startScene() {
@@ -305,22 +302,23 @@ function startScene() {
   if (transparency < 255) {
     fill(0, 0, 0, transparency);
     textSize(windowWidth/15);
-    text('"Where is Daddy,Mummy?"', width / 2, height / 4);
+    text('"Where is Daddy,Mummy?"', windowWidth / 2, windowHeight / 4);
     transparency++;
   } else {
     fill(0, 0, 0, transparency);
     textSize(windowWidth/15);
-    text('"Where is Daddy,Mummy?"', width / 2, height / 4);
+    text('"Where is Daddy,Mummy?"',  windowWidth / 2, windowHeight / 4);
     if (transparency2 < 255) {
       fill(0, 0, 0, transparency2);
-      text('"Dadddddyyyyyyyyyyy"', width / 2, height / 2);
+      text('"Dadddddyyyyyyyyyyy"',  windowWidth / 2, windowHeight / 2);
       transparency2++;
     } else {
       fill(0);
-      text('"Dadddddyyyyyyyyyyy"', width / 2, height / 2);
+      text('"Dadddddyyyyyyyyyyy"',  windowWidth / 2, windowHeight / 2);
       buttonContinue.display();
     }
   }
+ 
 }
 
 function level1IntroScene() {
@@ -328,15 +326,16 @@ function level1IntroScene() {
   textSize(100);
   if (transparency3 < 250) {
     fill(0, 0, 0, transparency3);
-    text("Level 1: Back and Forth", width / 2, height / 2);
+    text("Level 1: Back and Forth", windowWidth / 2, windowHeight / 2);
     transparency3++;
   } else if (transparency3 < 254) {
     fill(0);
-    text("Level 1: Back and Forth", width / 2, height / 2);
+    text("Level 1: Back and Forth", windowWidth / 2, windowHeight / 2);
     transparency3++;
   } else {
     mode++;
   }
+
 }
 function packingScene() {
   background(255, 16, 240);
@@ -377,11 +376,15 @@ function packingScene() {
     textSuitcaseScene3.display();
     buttonContinue.display();
   }
+  
 }
 
 function level2IntroScene() {
+  if (!song.isPlaying()){
+    song.play();
+  }
   background(255, 16, 240);
-  textSize(80)
+  textSize(95)
   if (transparency4 < 250) {
     fill(0, 0, 0, transparency4);
     text("Level 2: Wicked Witch of the West", width / 2, height / 2);
@@ -393,9 +396,14 @@ function level2IntroScene() {
   } else {
     mode++;
   }
+  
 }
 
+
 function wwwScene() {
+  if (!song.isPlaying()){
+    song.play();
+  }
   background(255, 16, 240);
   dad.display();
   push();
@@ -412,15 +420,15 @@ function wwwScene() {
     spells[i].display();
   }
 
-  if (spells[spells.length-1].x<0){
+  if (spells[spells.length-1].x>=windowWidth/1.4){
     buttonContinue.display();
    }
-
+  
 }
 
 function level3IntroScene() {
   background(255, 16, 240);
-  textSize(80)
+  textSize(100)
   if (transparency5 < 250) {
     fill(0, 0, 0, transparency5);
     text("Level 3: Happy Families", width / 2, height / 2);
@@ -432,37 +440,58 @@ function level3IntroScene() {
   } else {
     mode++;
   }
+  
 }
 
 function happyFamilies() {
+  if (!song.isPlaying()){
+    song.play();
+  }
   background(255, 16, 240);
   textSize(80)
   fill(0);
-  text("Try to fit into the family photo", width / 2, height / 6);
+  text("Try to fit yourself into the family photo", windowWidth / 2, windowHeight / 6);
   family.display();
   girlInPhoto.displayInteractiveObject();
   girlInPhoto.hover();
   girlInPhoto.updateLocation();
 
-
-  //fix the size of the family photo and this should work
-  if (girlInPhoto.x > windowWidth/2 &&
-    girlInPhoto.x < windowWidth/2+ 200 &&
-    girlInPhoto.y > windowHeight/2.5 &&
-    girlInPhoto.y < windowHeight/2.5 + 400) 
+  if (dist(girlInPhoto.x,girlInPhoto.y,family.x,family.y)<200) 
   {
   girlInPhoto.pushOut();
   buttonContinue.display();
   textFamilyScene1.display();
   }
+  
+  if(girlInPhoto.x==windowWidth/5 && girlInPhoto.y==windowHeight/6){
+  buttonContinue.display();
+  textFamilyScene1.display();
+  }
 
     //start the game again
-    if (buttonContinue.buttonClicked()){
-      mode=0;//we need to reset everything, not just set mode =0
+    if (girlInPhoto.x==windowWidth/5 && girlInPhoto.y==windowHeight/6 && buttonContinue.buttonClicked()){
+    restartGame();
     }
-  
+   
 }
 
+function restartGame(){
+      
+      transparency=0;
+      transparency2=0;
+      transparency3=0;
+      transparency4=0;
+      transparency5=0;
+      buttonContinue.reset();
+
+      //chatGPT assisted
+      for (let i = 0; i < interactiveObjectArray.length; i++) {
+        interactiveObjectArray[i].reset();
+      }
+
+      mode=0;
+      
+}
 
 
 //references
@@ -478,4 +507,6 @@ function happyFamilies() {
 //https://p5play.org/learn/sprite.html?page=0
 //https://p5js.org/examples/objects-array-of-objects.html
 //https://editor.p5js.org/xinxin/sketches/nC-CYIRGt
+//https://not-jam.itch.io/not-jam-music-pack
+
 

@@ -51,6 +51,7 @@ class interactiveObject {
       // Different fill based on state
       
       image(this.img, this.x, this.y, this.w, this.h);
+     
 
     }
   
@@ -63,15 +64,32 @@ class interactiveObject {
       }
     }
     
-    // change the object's location
-    pushOut(){
-      this.x= windoWidth/10;
-      this.y=windowHeight/10;
-    }
+
   
     //stop dragging the object
     released() {
       this.dragging = false;
+    }
+
+
+     // change the object's location
+     pushOut(){
+      this.x= windowWidth/5;
+      this.y=windowHeight/6;
+      
+    }
+
+    //reset object's properties to starting values
+    reset() {
+      this.img = img
+      this.x = x;
+      this.y = y;
+      this.w = w;
+      this.h = h;
+      this.hoverover = false; //default hoverover value to false - assume the object isn't being hovered over
+      this.dragging = false; //default dragging value to false - assume the object isn't being dragged
+      this.xOff = 0; //track how far item has been dragged from original location in X direction
+      this.yOff = 0;
     }
   }
   

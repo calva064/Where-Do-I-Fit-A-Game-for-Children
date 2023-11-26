@@ -61,5 +61,15 @@ class Button {
         return false;
       }
     }
+
+    //reset values to starting values
+    reset() {
+      this.x = x;
+      this.y = y;
+      this.w = w;
+      this.h = h;
+      this.label = label
+    }
+    
   }
   
